@@ -1,0 +1,100 @@
+{
+  "name": "tkvsc-tkmm-cli",
+  "displayName": "TKVSC - TKMM CLI",
+  "description": "Bundles Tkmm.CLI and exposes a consumer API for other TKVSC addons.",
+  "version": "1.0.0",
+  "publisher": "TKVSC-Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TKVSC-Team/tkvsc-addons",
+    "directory": "tkmm-cli"
+  },
+  "homepage": "https://github.com/TKVSC-Team/tkvsc-addons/tree/main/tkmm-cli",
+  "bugs": {
+    "url": "https://github.com/TKVSC-Team/tkvsc-addons/issues"
+  },
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "extensionDependencies": [
+    "TKVSC-Team.totk-vscode"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tkvsc-tkmm-cli.packageAsTkcl",
+        "title": "Package as TKCL",
+        "category": "TKMM CLI",
+        "icon": "$(package)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "tkvsc-tkmm-cli.packageAsTkcl",
+          "when": "activeCustomEditorId == 'totk-editor.tkprojEditor'",
+          "group": "navigation@1"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "tkvsc-tkmm-cli.packageAsTkcl",
+          "when": "view == totk-editor.archives && viewItem == archiveRoot",
+          "group": "8_tkmm@1"
+        },
+        {
+          "command": "tkvsc-tkmm-cli.packageAsTkcl",
+          "when": "view == totk-editor.archives && (viewItem == archiveProjectDir || viewItem == archiveProjectDirActive)",
+          "group": "8_tkmm@1"
+        },
+        {
+          "command": "tkvsc-tkmm-cli.packageAsTkcl",
+          "when": "view == totk-editor.archives && viewItem == archiveFile && resourceExtname == .tkproj",
+          "group": "8_tkmm@1"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "tkvsc-tkmm-cli.packageAsTkcl",
+          "when": "activeCustomEditorId == 'totk-editor.tkprojEditor'"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "TKVSC TKMM CLI",
+      "properties": {
+        "tkvscTkmmCli.cliPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional override path to Tkmm.CLI. Leave empty to use the bundled binary for your platform."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "tsc --noEmit && node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "lint": "eslint src --ext .ts",
+    "package": "tsc --noEmit && node esbuild.js",
+    "package:vsix": "npm run package && node -e \"require('fs').mkdirSync('out', { recursive: true }); require('child_process').execSync('npx vsce package --no-dependencies --allow-missing-repository --out out/tkvsc-tkmm-cli-' + process.env.npm_package_version + '.vsix', { stdio: 'inherit', cwd: process.cwd() })\""
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.125.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "@vscode/vsce": "^3.9.2",
+    "esbuild": "^0.25.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.0"
+  }
+}

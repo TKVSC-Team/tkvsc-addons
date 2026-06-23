@@ -32,7 +32,7 @@ totk-vscode/           ← parent checkout folder
 ```
 
 1. Build core TKVSC once: `cd ../totk-vscode && npm install && npm run compile`
-2. Install addon deps: `npm install` (from `example-addon/` or the `tkvsc-addons` root)
+2. Install addon deps: `npm install` (from `example-addon/`)
 3. Open **`example-addon`** as the VS Code workspace folder
 4. Press **F5** — launches Extension Host with **both** TKVSC and this addon loaded
 
@@ -83,12 +83,3 @@ Add a `contributes.tkvsc` block to register formats without calling the API at r
 ```
 
 See the [TKVSC addon development guide](https://github.com/TKVSC-Team/totk-vscode/blob/main/docs/addon-development.md) and [API reference](https://github.com/TKVSC-Team/totk-vscode/blob/main/docs/api/v1.md).
-
-## Next steps
-
-| Goal | Start from |
-|------|------------|
-| TKMM CLI command on project root | This template + spawn bundled CLI in command handler |
-| Custom binary editor (AINB, etc.) | Add `contributes.customEditors` + `readRawBytes` / `writeRawBytes` |
-| Another game (Splatoon 3, BOTW) | Add `contributes.tkvsc` `gameProfile` + Python handlers |
-| Different project layout | Implement `ProjectAdapter` and `registerProjectAdapter()` |

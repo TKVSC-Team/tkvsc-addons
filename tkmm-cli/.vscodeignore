@@ -1,0 +1,15 @@
+.vscode/**
+src/**
+node_modules/**
+../**
+**/*.ts
+**/*.map
+esbuild.js
+tsconfig.json
+out/**
+bin/Logs
+bin/.data
+bin/.data2
+bin/.layout
+docs/
+api_usage/
