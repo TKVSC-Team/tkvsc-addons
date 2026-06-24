@@ -2,6 +2,9 @@
 
 Programmatic API for companion VS Code extensions that use the bundled **Tkmm.CLI** without shipping their own copy.
 
+## DISCLAIMER
+Documentation for this plugin was written using AI, based on the codebase. Docs will be updated upon the release of TKVSC 1.0.0.
+
 | Document | Description |
 |----------|-------------|
 | **[v1.md](v1.md)** | **Complete API reference** (current) |

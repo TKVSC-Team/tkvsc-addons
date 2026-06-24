@@ -4,8 +4,6 @@
  * Until `@tkvsc/api` is published, keep this file in sync with:
  * https://github.com/TKVSC-Team/totk-vscode/blob/main/docs/api/v1.md
  *
- * Monorepo tip: you can replace this with path imports to totk-vscode/src/api
- * while developing locally.
  */
 import type * as vscode from 'vscode';
 

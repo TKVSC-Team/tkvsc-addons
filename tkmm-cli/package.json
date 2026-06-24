@@ -1,5 +1,6 @@
 {
   "name": "tkvsc-tkmm-cli",
+  "icon": "icons/TKVSC-TKMM.png",
   "displayName": "TKVSC - TKMM CLI",
   "description": "Bundles Tkmm.CLI and exposes a consumer API for other TKVSC addons.",
   "version": "1.0.0",

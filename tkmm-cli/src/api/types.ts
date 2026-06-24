@@ -17,7 +17,7 @@ export interface TkmmCliRunResult {
 }
 
 export interface TkmmPackageOptions {
-    /** Project root directory or path to a `.tkproj` file. */
+    /** Project root directory */
     projectPath: string;
     /** Destination `.tkcl` path. Required unless `promptForOutput` is true. */
     outputPath?: string;
