@@ -36,8 +36,14 @@ jobs:
         uses: actions/setup-node@v6.4.0
         with:
           node-version: '24'
-          cache: 'npm'
-          cache-dependency-path: ${{ matrix.addon }}/package-lock.json
+
+      - name: Cache node_modules
+        uses: actions/cache@v6
+        with:
+          path: ${{ matrix.addon }}/node_modules
+          key: ${{ runner.os }}-npm-${{ matrix.addon }}-${{ hashFiles(format('{0}/package-lock.json', matrix.addon), format('{0}/package.json', matrix.addon)) }}
+          restore-keys: |
+            ${{ runner.os }}-npm-${{ matrix.addon }}-
 
       - name: Install dependencies
         working-directory: ${{ matrix.addon }}
