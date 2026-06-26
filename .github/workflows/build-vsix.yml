@@ -1,0 +1,64 @@
+name: Build addon VSIX
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
+  workflow_dispatch:
+
+jobs:
+  build-vsix:
+    name: ${{ matrix.addon }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        addon:
+          - example-addon
+          - tkmm-cli
+          - splatoon3-support
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6.4.0
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: ${{ matrix.addon }}/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ${{ matrix.addon }}
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Lint
+        working-directory: ${{ matrix.addon }}
+        run: npm run lint
+
+      - name: Package VSIX
+        working-directory: ${{ matrix.addon }}
+        run: npm run package:vsix
+
+      - name: Upload VSIX artifact
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: ${{ matrix.addon }}-vsix
+          path: ${{ matrix.addon }}/out/*.vsix
+          if-no-files-found: error
