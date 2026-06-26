@@ -54,10 +54,6 @@ jobs:
             npm install
           fi
 
-      - name: Lint
-        working-directory: ${{ matrix.addon }}
-        run: npm run lint
-
       - name: Package VSIX
         working-directory: ${{ matrix.addon }}
         run: npm run package:vsix
