@@ -58,8 +58,15 @@
         },
         {
           "command": "tkvsc-tkmm-cli.packageAsTkcl",
-          "when": "view == totk-editor.archives && viewItem == archiveFile && resourceExtname == .tkproj",
+          "when": "view == totk-editor.archives && viewItem == archiveFile && resourceFilename == .tkproj",
           "group": "8_tkmm@1"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "tkvsc-tkmm-cli.packageAsTkcl",
+          "when": "resourceFilename == .tkproj",
+          "group": "navigation@1"
         }
       ],
       "commandPalette": [

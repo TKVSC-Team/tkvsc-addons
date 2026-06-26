@@ -26,32 +26,27 @@ function fromProjectRoot(projectRoot: string): TkmmProjectContext | undefined {
     return { projectRoot, tkprojPath };
 }
 
-function asTreeItem(item: unknown): { contextValue?: string; resourceUri?: vscode.Uri } | undefined {
+function resolveItemUri(item: unknown): vscode.Uri | undefined {
+    if (item instanceof vscode.Uri) {
+        return item;
+    }
     if (!item || typeof item !== 'object') {
         return undefined;
     }
-    const candidate = item as { contextValue?: string; resourceUri?: vscode.Uri };
-    return candidate.resourceUri?.fsPath ? candidate : undefined;
-}
-
-export function resolveProjectFromPath(projectPath: string): TkmmProjectContext | undefined {
-    const normalized = path.normalize(projectPath);
-    if (normalized.toLowerCase().endsWith('.tkproj')) {
-        return fromTkprojPath(normalized);
-    }
-    return fromProjectRoot(normalized);
+    const candidate = item as { resourceUri?: vscode.Uri };
+    return candidate.resourceUri?.fsPath ? candidate.resourceUri : undefined;
 }
 
 export async function resolvePackageContext(item?: unknown): Promise<TkmmProjectContext | undefined> {
-    const treeItem = asTreeItem(item);
-    if (treeItem?.resourceUri) {
-        const fromFile = fromTkprojPath(treeItem.resourceUri.fsPath);
+    const resourceUri = resolveItemUri(item);
+    if (resourceUri) {
+        const fromFile = fromTkprojPath(resourceUri.fsPath);
         if (fromFile) {
             return fromFile;
         }
 
         const tkvsc = await getTkvscApi({ silent: true });
-        const projectRoot = tkvsc?.resolveProjectRoot(treeItem);
+        const projectRoot = tkvsc?.resolveProjectRoot(item);
         if (projectRoot) {
             return fromProjectRoot(projectRoot);
         }
@@ -63,6 +58,14 @@ export async function resolvePackageContext(item?: unknown): Promise<TkmmProject
     }
 
     return undefined;
+}
+
+export function resolveProjectFromPath(projectPath: string): TkmmProjectContext | undefined {
+    const normalized = path.normalize(projectPath);
+    if (normalized.toLowerCase().endsWith('.tkproj')) {
+        return fromTkprojPath(normalized);
+    }
+    return fromProjectRoot(normalized);
 }
 
 export async function saveTkprojIfDirty(tkprojPath: string): Promise<void> {
