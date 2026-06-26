@@ -4,12 +4,12 @@ Official companion extensions for [TKVSC](https://github.com/TKVSC-Team/totk-vsc
 
 ## Packages
 
-| Folder | Status | Description |
-|--------|--------|-------------|
-| [**example-addon**](example-addon/) | **Template** | Copy this when starting a new addon |
-| [tkmm-cli](tkmm-cli/) | Planned | TKMM CLI integration |
-| [splatoon3-support](splatoon3-support/) | Planned | Splatoon 3 support |
-| [botw-support](botw-support/) | Planned | Breath of the Wild support |
+| Folder                                  | Status       | Description                         |
+| --------------------------------------- | ------------ | ----------------------------------- |
+| [**example-addon**](example-addon/)     | **Template** | Copy this when starting a new addon |
+| [tkmm-cli](tkmm-cli/)                   | Released     | TKMM CLI integration                |
+| [splatoon3-support](splatoon3-support/) | Planned      | Splatoon 3 support                  |
+| [botw-support](botw-support/)           | Planned      | Breath of the Wild support          |
 
 Press **F5** inside `example-addon/` (see its README) to run against a sibling `totk-vscode` checkout.
 
