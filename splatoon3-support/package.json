@@ -1,0 +1,98 @@
+{
+  "name": "tkvsc-splatoon3",
+  "displayName": "TKVSC - Splatoon 3",
+  "description": "Registers Splatoon 3 as a TKVSC game profile and validates ModuleSystem RomFS dumps.",
+  "version": "0.0.1",
+  "publisher": "TKVSC-Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mindstormman06/tkvsc-addons",
+    "directory": "splatoon3-support"
+  },
+  "homepage": "https://github.com/Mindstormman06/tkvsc-addons/tree/main/splatoon3-support",
+  "bugs": {
+    "url": "https://github.com/Mindstormman06/tkvsc-addons/issues"
+  },
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "extensionDependencies": [
+    "TKVSC-Team.totk-vscode"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tkvsc-splatoon3.setGameDump",
+        "title": "Splatoon 3: Set Game Dump Path",
+        "category": "TKVSC Splatoon 3"
+      }
+    ],
+    "configuration": {
+      "title": "Splatoon 3 (TKVSC)",
+      "properties": {
+        "TKVSC.splatoon3.romfsPath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Path to your extracted **Splatoon 3** RomFS dump. Must contain `Pack/Bootup.Nin_NX_NVN.pack.zs`."
+        }
+      }
+    },
+    "tkvsc": {
+      "id": "splatoon3",
+      "gameProfile": {
+        "id": "splatoon3",
+        "displayName": "Splatoon 3",
+        "romfsSentinel": "Pack/Bootup.Nin_NX_NVN.pack.zs",
+        "compressionBackend": "plain-zstd-yaz0",
+        "romfsSettingsKey": "splatoon3.romfsPath",
+        "indexing": {
+          "enableRomfsSearch": true,
+          "enableCanonicalPaths": false,
+          "archiveExtensions": [
+            ".pack",
+            ".sarc",
+            ".genvb",
+            ".blarc",
+            ".bfarc",
+            ".bntx",
+            ".pack.zs",
+            ".sarc.zs",
+            ".genvb.zs",
+            ".blarc.zs",
+            ".bfarc.zs",
+            ".bntx.zs"
+          ]
+        }
+      },
+      "archivePatterns": [
+        "\\.(pack|sarc|genvb|blarc|bfarc|bntx)(\\.zs)?$"
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "tsc --noEmit && node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "lint": "eslint src --ext .ts",
+    "package": "tsc --noEmit && node esbuild.js",
+    "package:vsix": "npm run package && node -e \"require('fs').mkdirSync('out', { recursive: true }); require('child_process').execSync('npx vsce package --no-dependencies --allow-missing-repository --out out/tkvsc-splatoon3-support-' + process.env.npm_package_version + '.vsix', { stdio: 'inherit', cwd: process.cwd() })\""
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.125.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "@vscode/vsce": "^3.9.2",
+    "esbuild": "^0.25.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.0"
+  }
+}
