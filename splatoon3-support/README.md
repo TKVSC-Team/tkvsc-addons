@@ -8,13 +8,12 @@ Registers **Splatoon 3** as a TKVSC game profile so RomFS dumps can be validated
 - Validates dumps using the ModuleSystem sentinel: `Pack/Bootup.Nin_NX_NVN.pack.zs`
 - Sets `TKVSC.splatoon3.romfsPath` and switches `TKVSC.activeGameId` to `splatoon3`
 
-No custom formats or editors yet — this is the framework for future Splatoon 3 work.
-
 ## Setup
 
 1. Install [TKVSC](https://github.com/TKVSC-Team/totk-vscode) and this extension
 2. Command Palette → **Splatoon 3: Set Game Dump Path**
 3. Select your extracted RomFS folder (or a parent folder containing it)
+4. You can freely switch between games at any time in settings
 
 TKVSC checks for `Pack/Bootup.Nin_NX_NVN.pack.zs` under the chosen path. This file is present on ModuleSystem titles (including Splatoon 3).
 

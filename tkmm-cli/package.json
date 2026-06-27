@@ -3,7 +3,7 @@
   "icon": "icons/TKVSC-TKMM.png",
   "displayName": "TKVSC - TKMM CLI",
   "description": "Bundles Tkmm.CLI and exposes a consumer API for other TKVSC addons.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "TKVSC-Team",
   "license": "MIT",
   "repository": {
@@ -58,14 +58,14 @@
         },
         {
           "command": "tkvsc-tkmm-cli.packageAsTkcl",
-          "when": "view == totk-editor.archives && viewItem == archiveFile && resourceFilename == .tkproj",
+          "when": "view == totk-editor.archives && viewItem == archiveTkproj",
           "group": "8_tkmm@1"
         }
       ],
       "explorer/context": [
         {
           "command": "tkvsc-tkmm-cli.packageAsTkcl",
-          "when": "resourceFilename == .tkproj",
+          "when": "resourcePath =~ /\\.tkproj$/i",
           "group": "navigation@1"
         }
       ],
