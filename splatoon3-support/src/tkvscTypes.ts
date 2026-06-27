@@ -22,17 +22,23 @@ export interface GameProfileRegistration {
     legacyRomfsSettingsKeys?: string[];
     indexing?: GameIndexingConfig;
     archivePatterns?: string[];
+    /** MSBT tag definitions (.gcf), relative to the registering addon root. */
+    msbtConfigPath?: string;
 }
 
 export interface GameProfile extends GameProfileRegistration {
     source: 'builtin' | 'manifest' | 'api';
+    msbtConfigResolvedPath?: string;
 }
 
 export interface TkvscApi {
     readonly apiVersion: typeof TKVSC_API_VERSION;
     readonly extensionId: string;
     readonly onDidReady: vscode.Event<void>;
-    registerGameProfile(registration: GameProfileRegistration): vscode.Disposable;
+    registerGameProfile(
+        registration: GameProfileRegistration,
+        options?: { extensionRoot?: string },
+    ): vscode.Disposable;
     getActiveGameProfile(): GameProfile;
     getGameProfile(gameId: string): GameProfile | undefined;
 }

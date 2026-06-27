@@ -1,0 +1,214 @@
+<h1>TKVSC - Splatoon 3 Addon</h1>
+
+An addon for TKVSC that adds support for Splatoon 3. It registers Splatoon 3 as a TKVSC game profile that allows for easy browsing and editing of game files.<br>
+
+This addon is in active development and is currently in beta. Please report any issues you encounter on the <a href="https://github.com/TKVSC-Team/tkvsc-addons/issues" target="_blank">GitHub Issues</a> page.<br>
+The Splatoon 3 support is largely untested, as none of our developers are knowledgable in modding Splatoon 3. If you are a Splatoon 3 modder and would like to help us test and improve this addon, please reach out to us on our <a href="https://discord.gg/vwPnX2uB8s" target="_blank">Discord</a> server.
+
+<h2>What is TKVSC?</h2>
+<p>
+  The <strong>T</strong>ears of the <strong>K</strong>ingdom
+  <strong>V</strong>isual <strong>S</strong>tudio <strong>C</strong>ode
+  Extension or <strong>TKVSC</strong> is a Visual Studio Code extension for
+  editing and browsing
+  <strong>Module System</strong> (<strong>TotK</strong>) game files.
+</p>
+
+
+<p>
+  <strong>TKVSC Website</strong>:
+  <a href="https://tkvsc.dev/">https://tkvsc.dev/</a>
+</p>
+
+<p>
+  <strong>Game Dump Guide</strong> (required):
+  <a href="https://gamebanana.com/tuts/19858"
+    >https://gamebanana.com/tuts/19858</a
+  >
+</p>
+
+<h2>DISCLAIMER</h2>
+<p>
+  <strong
+    >WE ARE NOT RESPONSIBLE IF YOUR MOD BREAKS. THIS TOOL IS IN ACTIVE BETA AND
+    THINGS WILL BREAK. MAKE FREQUENT BACKUPS</strong
+  >
+</p>
+
+<hr />
+
+<h2>Features</h2>
+<p>Preview and edit subfiles of SARC and BNTX archives</p>
+
+<p>
+  <img
+    src="https://github.com/TKVSC-Team/totk-vscode/blob/main/graphics/Promo/SARC_Edit.png?raw=true"
+    alt="SARC Edit Preview"
+    width="720"
+  />
+</p>
+
+<h3>Supported Filetypes</h3>
+
+<h4>Text Editor</h4>
+<ul>
+  <li>BYML</li>
+  <li>BGYML</li>
+  <li>AAMP</li>
+  <li>MSBT</li>
+  <li>ASB</li>
+  <li>BAEV</li>
+  <li>XLINK</li>
+  <li>PCHTXT</li>
+</ul>
+
+<h4>Texture Viewer/Replacer</h4>
+<ul>
+  <li>BNTX</li>
+  <li>Tex2Go</li>
+</ul>
+
+<h4>Audio Player</h4>
+<ul>
+  <li>Bars</li>
+  <li>BFWAV</li>
+</ul>
+
+<hr />
+
+<h3>Activity Bar Tabs</h3>
+<p>
+  <img
+    src="https://github.com/TKVSC-Team/totk-vscode/blob/main/graphics/Promo/ActivityBarGuide.png?raw=true"
+    alt="Activity Bar Guide"
+    width="400"
+  />
+</p>
+
+<p><strong>Your Projects</strong></p>
+<p><strong>The multigame project system is currently in development! TKVSC will attempt to force you to use TKMM, but you can safely delete the files relating to it.</strong></p>
+<ul>
+  <li>Add the current folder open in VS Code to a list of Project Folders</li>
+</ul>
+
+<p><strong>Game Dump</strong></p>
+<ul>
+  <li>
+    Browse your game dump in Read-Only mode. Right click to add a file to the
+    correct romfs path within a Project Folder of your choosing
+  </li>
+</ul>
+
+<h3>Additional capabilities:</h3>
+<ul>
+  <li>
+    Archives within archives (e.g. a <code>.sarc</code> inside a
+    <code>.pack</code>) can be browsed and edited
+  </li>
+  <li>Search for romfs contents, including filenames inside of SARCs</li>
+  <li>
+    Right-click a file within an archive to export it to a Project Folder.
+  </li>
+  <li>
+    Rather than the typical method of copying, pasting, and wiping an existing
+    file to make a new file of the same format, TKVSC can create empty files of
+    formats supported by the editor.
+  </li>
+  <li>
+    Preview <code>.bntx</code> subfiles and <code>.txtg</code> files as PNGs
+  </li>
+  <li>
+    For files TKVSC does not support, such as <code>.bfres</code>, the user can
+    choose external programs to open them in by default (separate from similar
+    features in the OS), or open them in the built-in hex editor.
+  </li>
+</ul>
+
+<p>
+  <img
+    src="https://github.com/TKVSC-Team/totk-vscode/blob/main/graphics/Promo/tkproj_Edit.png?raw=true"
+    alt="tkproj Edit Preview"
+    width="800"
+  />
+</p>
+
+<hr />
+
+<h2>Planned Features</h2>
+<p>
+  <em
+    >( if there are any features you don't see on here, feel free to make an
+    issue on this GitHub! )</em
+  >
+</p>
+
+<ul>
+  <li>Node Based Editors (AINB, ASB, BAEV, and EVFL are all planned.)</li>
+  <li>BFRES Support (Preview, Editing.)</li>
+  <li>Audio Support (BARS, BWAV.) (Read currently supported, write W.I.P)</li>
+  <li>Actor Tooling (Automating the process as much as possible.)</li>
+  <li>Full romfs file content string searching</li>
+  <li><sub>PTCL/Effect support is being researched but not confirmed.</sub></li>
+</ul>
+
+<hr />
+
+<h2>Setup</h2>
+
+You can find a complete setup tutorial for TKVSC on the <a href="https://tkvsc.dev/docs/setup-guide/index.html" target="_blank">TKVSC Docs</a> page, or continue below.
+
+<h3>Requirements</h3>
+<ul>
+  <li>
+    <a href="https://www.python.org/downloads/" target="_blank">Python 3.13+</a>
+  </li>
+  <li>
+    <a
+      href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170"
+      target="_blank"
+      >Microsoft C++ Redis</a
+    >
+  </li>
+  <li>Node.js (if building extension from source)</li>
+  <li>Python 3.13-venv (on Linux)</li>
+  <li>Valid game dump</li>
+</ul>
+
+<h3>Steps</h3>
+<ol>
+  <li>Install the extension (VSIX).</li>
+  <li>Follow the prompts, skipping any steps relating to game dump or TKMM.</li>
+  <li>Install the addon extension.</li>
+  <li>Press `Ctrl+Shift+P` to open the Command Palette and run `TKVSC Splatoon 3: Splatoon 3: Set Game Dump Path`.</li>
+</ol>
+
+<h3>Python troubleshooting</h3>
+<p>
+  <strong
+    ><code>python3</code> works in CMD but the extension cannot find
+    Python?</strong
+  >
+  VSCode is often launched without your full user PATH (unlike a terminal you
+  opened yourself). Fix:
+</p>
+
+<ol>
+  <li>
+    <strong>TKVSC: Select Python (from detected installs)</strong> - scans
+    <code>where python3</code>, common install folders, and <code>py</code>.
+  </li>
+  <li>
+    <strong>TKVSC: Browse for python.exe</strong> - point at the real
+    interpreter (e.g.
+    <code>%LocalAppData%\Programs\Python\Python314\python.exe</code>).
+  </li>
+  <li>
+    Or set <strong>TKVSC → Python Path</strong> to that full path, then
+    <strong>TKVSC: Set Up Python Environment</strong> again.
+  </li>
+</ol>
+
+<p>
+  If setup fails, run <strong>TKVSC: Set Up Python Environment</strong> from the
+  Command Palette.
+</p>

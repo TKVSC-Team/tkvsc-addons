@@ -54,6 +54,7 @@
         "romfsSentinel": "Pack/Bootup.Nin_NX_NVN.pack.zs",
         "compressionBackend": "plain-zstd-yaz0",
         "romfsSettingsKey": "splatoon3.romfsPath",
+        "msbtConfigPath": "Splat3.gcf",
         "indexing": {
           "enableRomfsSearch": true,
           "enableCanonicalPaths": false,

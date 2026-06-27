@@ -18,7 +18,11 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
     // Register via API so the profile exists even when core's initial manifest
     // scan ran before this extension was visible (common in dev / VSIX load order).
-    context.subscriptions.push(api.registerGameProfile(SPLATOON3_GAME_PROFILE));
+    context.subscriptions.push(
+        api.registerGameProfile(SPLATOON3_GAME_PROFILE, {
+            extensionRoot: context.extensionPath,
+        }),
+    );
 
     if (!api.getGameProfile(SPLATOON3_GAME_ID)) {
         void vscode.window.showErrorMessage(

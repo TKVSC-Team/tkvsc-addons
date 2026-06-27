@@ -35,6 +35,7 @@ export const SPLATOON3_GAME_PROFILE: GameProfileRegistration = {
     archivePatterns: [
         '\\.(pack|sarc|genvb|blarc|bfarc|bntx)(\\.zs)?$',
     ],
+    msbtConfigPath: 'Splat3.gcf',
 };
 
 export function splatoon3SentinelPath(romfsRoot: string): string {
