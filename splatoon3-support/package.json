@@ -3,7 +3,7 @@
   "icon": "icons/icon.png",
   "displayName": "TKVSC - Splatoon 3",
   "description": "Registers Splatoon 3 as a TKVSC game profile and validates ModuleSystem RomFS dumps.",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "publisher": "TKVSC-Team",
   "license": "MIT",
   "repository": {
@@ -57,7 +57,7 @@
         "msbtConfigPath": "Splat3.gcf",
         "indexing": {
           "enableRomfsSearch": true,
-          "enableCanonicalPaths": false,
+          "enableCanonicalPaths": true,
           "archiveExtensions": [
             ".pack",
             ".sarc",

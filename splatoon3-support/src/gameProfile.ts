@@ -16,7 +16,7 @@ export const SPLATOON3_GAME_PROFILE: GameProfileRegistration = {
     romfsSettingsKey: 'splatoon3.romfsPath',
     indexing: {
         enableRomfsSearch: true,
-        enableCanonicalPaths: false,
+        enableCanonicalPaths: true,
         archiveExtensions: [
             '.pack',
             '.sarc',

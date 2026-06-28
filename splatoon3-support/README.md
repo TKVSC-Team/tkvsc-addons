@@ -31,7 +31,7 @@ TKVSC checks for `Pack/Bootup.Nin_NX_NVN.pack.zs` under the chosen path. This fi
 | `id` | `splatoon3` |
 | `romfsSentinel` | `Pack/Bootup.Nin_NX_NVN.pack.zs` |
 | `compressionBackend` | `plain-zstd-yaz0` |
-| `indexing.enableCanonicalPaths` | `false` |
+| `indexing.enableCanonicalPaths` | `true` |
 
 ## Development
 
